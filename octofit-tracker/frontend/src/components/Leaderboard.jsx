@@ -9,7 +9,9 @@ export default function Leaderboard() {
   useEffect(() => {
     async function loadLeaderboard() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/leaderboard/`);
+        const codespacesExample = 'https://<codespace-name>-8000.app.github.dev/api/leaderboard';
+        const apiUrl = `${getApiBaseUrl()}/api/leaderboard/`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data?.data ?? [];
         setRows(payload);

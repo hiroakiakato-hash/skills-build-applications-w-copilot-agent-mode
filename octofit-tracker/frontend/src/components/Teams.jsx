@@ -9,7 +9,9 @@ export default function Teams() {
   useEffect(() => {
     async function loadTeams() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/teams/`);
+        const codespacesExample = 'https://<codespace-name>-8000.app.github.dev/api/teams';
+        const apiUrl = `${getApiBaseUrl()}/api/teams/`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data?.data ?? [];
         setTeams(payload);

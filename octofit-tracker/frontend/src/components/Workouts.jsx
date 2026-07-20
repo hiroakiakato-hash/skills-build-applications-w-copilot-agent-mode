@@ -9,7 +9,9 @@ export default function Workouts() {
   useEffect(() => {
     async function loadWorkouts() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/workouts/`);
+        const codespacesExample = 'https://<codespace-name>-8000.app.github.dev/api/workouts';
+        const apiUrl = `${getApiBaseUrl()}/api/workouts/`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data?.data ?? [];
         setWorkouts(payload);

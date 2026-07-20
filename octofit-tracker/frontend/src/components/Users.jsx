@@ -9,7 +9,9 @@ export default function Users() {
   useEffect(() => {
     async function loadUsers() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/users/`);
+        const codespacesExample = 'https://<codespace-name>-8000.app.github.dev/api/users';
+        const apiUrl = `${getApiBaseUrl()}/api/users/`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data?.data ?? [];
         setUsers(payload);

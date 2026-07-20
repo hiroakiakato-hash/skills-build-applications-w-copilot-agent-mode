@@ -9,7 +9,9 @@ export default function Activities() {
   useEffect(() => {
     async function loadActivities() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/activities/`);
+        const codespacesExample = 'https://<codespace-name>-8000.app.github.dev/api/activities';
+        const apiUrl = `${getApiBaseUrl()}/api/activities/`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data?.data ?? [];
         setActivities(payload);
