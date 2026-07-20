@@ -1,0 +1,20 @@
+{
+  "name": "octofit-backend",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "npm run build && node dist/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed": "npm run build && node dist/scripts/seed.js"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
