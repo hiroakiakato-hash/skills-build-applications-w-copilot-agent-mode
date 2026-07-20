@@ -1,39 +1,48 @@
-import './App.css'
+import { NavLink, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Activities from './components/Activities';
+import Leaderboard from './components/Leaderboard';
+import Teams from './components/Teams';
+import Users from './components/Users';
+import Workouts from './components/Workouts';
+
+const links = [
+  { to: '/', label: 'Overview' },
+  { to: '/users', label: 'Users' },
+  { to: '/teams', label: 'Teams' },
+  { to: '/activities', label: 'Activities' },
+  { to: '/leaderboard', label: 'Leaderboard' },
+  { to: '/workouts', label: 'Workouts' },
+];
 
 function App() {
   return (
-    <main className="container py-5">
-      <div className="row align-items-center g-4">
-        <div className="col-lg-7">
-          <p className="text-uppercase fw-semibold text-primary mb-3">OctoFit Tracker</p>
-          <h1 className="display-4 fw-bold mb-3">Make fitness fun for every student.</h1>
-          <p className="lead text-muted mb-4">
-            Track workouts, join friendly challenges, and celebrate progress with a simple student-friendly experience.
-          </p>
-          <div className="d-flex gap-3 flex-wrap">
-            <a className="btn btn-primary btn-lg" href="https://github.com/hiroakiakato-hash/skills-build-applications-w-copilot-agent-mode" target="_blank" rel="noreferrer">
-              Explore the project
-            </a>
-            <a className="btn btn-outline-secondary btn-lg" href="http://localhost:8000" target="_blank" rel="noreferrer">
-              Open API preview
-            </a>
-          </div>
-        </div>
-        <div className="col-lg-5">
-          <div className="card shadow-sm border-0">
-            <div className="card-body p-4">
-              <h2 className="h4 fw-semibold mb-3">What’s ready</h2>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item px-0">React 19 + Vite frontend</li>
-                <li className="list-group-item px-0">Express + TypeScript backend</li>
-                <li className="list-group-item px-0">MongoDB-ready Mongoose setup</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    <main className="container py-4">
+      <header className="mb-4">
+        <p className="text-uppercase fw-semibold text-primary mb-2">OctoFit Tracker</p>
+        <h1 className="display-5 fw-bold mb-3">Student fitness, competition, and progress in one place.</h1>
+        <p className="text-muted mb-4">
+          Configure <code>VITE_CODESPACE_NAME</code> in <code>.env.local</code> for Codespaces URLs. If it is not set, the app falls back to localhost.
+        </p>
+        <nav className="nav nav-pills flex-wrap gap-2">
+          {links.map((link) => (
+            <NavLink key={link.to} to={link.to} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+              {link.label}
+            </NavLink>
+          ))}
+        </nav>
+      </header>
+
+      <Routes>
+        <Route path="/" element={<Users />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/workouts" element={<Workouts />} />
+      </Routes>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
